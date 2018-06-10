@@ -1,3 +1,5 @@
+# docker-compose-for-laravel
+the docker-compose yaml file for laravel env 
 這是laravel 用的docker 環境
 如果是使用mysql 8以上的版本 需要進入mysql的container
 docker exec -it mysql /bin/bash
