@@ -24,8 +24,8 @@ mysql:
 php:
   container_name: php
   restart: always
-  # image: php:fpm-alpine
-  image: kyjita/php_alpine_pdo_composer:latest
+  image: php:fpm-alpine
+  # image: kyjita/php_alpine_pdo_composer:latest
   links:
     - mysql:mysql
     - queue:queue
@@ -62,3 +62,18 @@ redis:
   container_name: redis
   ports:
     - 6379:6379
+  # expose:
+  #   - '6379'
+websocket:
+  container_name: websocket
+  image: kyjita/websocket
+  restart: always
+  ports:
+    - 3000:3000
+  links:
+    - redis
+  volumes:
+    - ./app.js:/srv/app.js
+    - ./test.html:/srv/test.html
+
+  # command: node /srv/app.js
